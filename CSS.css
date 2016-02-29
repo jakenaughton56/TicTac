@@ -1,0 +1,175 @@
+/* tic tac toe CSS file */
+
+
+body {
+	padding-top:2%;
+}
+
+
+/* heading */
+.heading {
+	position: absolute;
+	left: 0;
+    top: 0;
+    width: 100%;
+	float: center;
+	background-color:teal;
+	color:white;
+	font-size: 50px;
+    margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+ }
+ 
+
+ /* menu block */
+.menu_block{
+	margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+	margin-top:10%;
+
+}
+
+.menu_block h1{
+	font-family: Impact;
+	margin-top: 5%;
+ }
+
+.menu_block table{
+    margin-left:auto; 
+    margin-right:auto;
+	margin-top:2%;
+	text-align:center;
+}
+
+.menu_block .game_options{
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.menu_block .game_options td {
+	border-radius: 8px;
+	text-align: center;
+	width: 200px;
+	height: 50px;
+}
+
+/* not currently working
+
+.menu_block td:hover {
+	border: 2px solid white;
+}
+*/
+
+.menu_block img{
+	width: 70%;
+}
+
+/* all id's contained in menu block */
+/* different button colors */
+#human{
+	background-color: blue;
+}
+
+#easy{
+	background-color: green;
+}
+
+#med{
+	background-color: orange;
+}
+
+#hard{
+	background-color: red;
+}
+/* short description at end of options */
+#boss{
+	margin-top: 10%;
+	font-family: fantasy;
+	font-size: 35px;
+}
+
+ 
+
+
+
+
+/* After 1st page */
+
+.game_in_play {
+	margin-top:3%;
+}
+
+.game_in_play p {
+	font-size: 25px;
+	margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+}
+
+.game_table {
+	display:none;
+}
+
+.game_table {
+	text-align: center;
+	margin-top: 20%;
+	margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+}
+
+.game_table td {
+	border-style: solid;
+	border-width: 2px;
+	margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+	border-color: black;
+	padding-top: 2%;
+	font-size: 25px;
+	width: 50px;
+	height: 50px;
+	cursor:pointer;
+}
+
+.first_player {
+	display: none;
+	margin-top: 30px;
+}
+ 
+ #xo {
+    margin-left:auto; 
+    margin-right:auto;
+	text-align: center;
+	width: 170px;
+	height: 170px;
+}
+
+
+/*	position:absolute;
+	top: 20%;
+    left: 50%;
+    margin-left: -300px;
+*/
+
+
+/* errors in footer css 
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 35px;
+    width: 100%;
+	background-color:teal;
+	color:white;
+    margin-left:auto; 
+    margin-right:auto;
+	font-size: 20px;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+*/
