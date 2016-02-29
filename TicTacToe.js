@@ -2,7 +2,10 @@
 
 $(document).ready(function() {
 	initialize();
+	set_up_game();
+
 });
+
 
 function initialize(){
 
@@ -11,22 +14,19 @@ function initialize(){
 	for(var i=0; i<game_board.length; i++){
 		game_board[i] = null;
 	}
+}
 
+function set_up_game() {
 	// When player chooses difficulty
 	$('.menu_block').click(function() {
 		$('.menu_block').toggle(500);
 		$('.game_table').delay(600).toggle();
-		who_starts();
-
-		
-		$('.first_player').delay(1350).css('display','block');
-		$('.first_player').delay(1350).prepend(starting_player);
+		var current_player = who_starts();
 	});
 
 	$('.game_table td').click(function() {
-
-	var col = $(this).parent().children().index($(this));
-	var row = $(this).parent().parent().children().index($(this).parent());
+		var col = $(this).parent().children().index($(this));
+		var row = $(this).parent().parent().children().index($(this).parent());
 		// checks if position on board has already been played
 		if(game_board[row*3 + col] === null){
 
@@ -36,7 +36,7 @@ function initialize(){
 				confirm(current_player + " wins");
 			}
 				change_player();
-			}
+		}
 	});
 }
 
@@ -83,8 +83,9 @@ function who_starts() {
 			starting_player = "Computer";
 			current_player = 'O';
 	}
-
-
+	$('.first_player').delay(1350).css('display','block');
+	$('.first_player').delay(1350).prepend(starting_player);
+	return current_player;
 }
 
 
@@ -116,46 +117,6 @@ function change_player() {
 			}
 
 
-
-// WIN CONDITIONS
-
-
-function horizontal_win () {
-	if ((A1 === "X" + A2 === "X" + A3 === 'X') || (B1 === "X" + B2 === "X" + B3 === 'X') || (C1 === "X" + C2 === "X" + C3 === "X")) {
-	    return win
-	}
-}
-
-function vertical_win () {
-    if ((A1 === "X" + B1 === "X" + C1 === 'X') || (A2 === "X" + B2 === "X" + C2 === 'X') || (A3 === "X" + B3 === "X" + C3 === "X")) {
-		return win
-}
-
-function diagonal_win () {
-    if ((A1 === "X" + B2 === "X" + C3 === 'X') || (C1 === "X" + B2 === "X" + A3 === 'X')) {
-	   store_score.this.player += 1 
-	   return win
-
-}
-
-
-// CHECKING FOR ANY WIN CONDITIONS OF MATCH
-
-function is_match_won () {
-	if (horizontal win() === true || vertical_win() === true || diagonal_win = true);
-		console.log (player + " has taken the match! The score is " + player_1_score + " to " + player_2_score);
-		match_running = false;
-		console.log("Let's start the next round. Click roll to see who will start");
-}
-
-
-
-//STORE SCORE - DO LATER
-
-
-function store_score() {
-	var player_1_score;
-	var player_2_score;
 
 
 // CHECKING FOR HIT AMOUNT OF MATCHES. GAME ENDS. 
