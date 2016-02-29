@@ -2,28 +2,38 @@
 
 $(document).ready(function() {
 	initialize();
-	set_up_game();
-
+	var game_board = set_up_game();
+	play_game(game_board);
 });
 
 
 function initialize(){
 
-	// Initialize empty game borderImageRepeat = 'round'
-	var game_board = new Array(9);
-	for(var i=0; i<game_board.length; i++){
-		game_board[i] = null;
-	}
-}
-
-function set_up_game() {
 	// When player chooses difficulty
 	$('.menu_block').click(function() {
 		$('.menu_block').toggle(500);
 		$('.game_table').delay(600).toggle();
-		var current_player = who_starts();
+		$('.restart').delay(600).toggle();
 	});
+}
 
+
+function set_up_game() {
+	// Initialize empty game border
+	var game_board = new Array(9);
+	for(var i=0; i<game_board.length; i++){
+		game_board[i] = null;
+	}
+	return game_board;
+}
+
+
+function play_game(game_board) {
+
+	// Change to local variable
+	current_player = 'X';
+	var game_over = false
+	// when player clicks a tile
 	$('.game_table td').click(function() {
 		var col = $(this).parent().children().index($(this));
 		var row = $(this).parent().parent().children().index($(this).parent());
@@ -32,10 +42,26 @@ function set_up_game() {
 
             $(this).prepend(current_player);
 			game_board[row*3 + col] = current_player;
+
+			// check if player has won, else change players.
 			if(check_for_win(game_board,current_player) ){
 				confirm(current_player + " wins");
+				game_board = set_up_game();
+				$('.game_table td').empty();
 			}
-				change_player();
+			current_player = change_player();
+		}
+	});
+
+	if(game_over === true){
+		confirm(current_player + " wins");
+
+	}
+
+	$('.restart').click(function(){
+		if(confirm("Are you sure you want to restart?")){
+			game_board = set_up_game();
+			$('.game_table td').empty();
 		}
 	});
 }
@@ -69,27 +95,7 @@ function check_for_win(game_board, player){
 	return false;
 }
 
-
-
-
-
-function who_starts() {
-	var starting_player = Math.floor(Math.random()*2 + 1);
-	if (starting_player === 1) {
-		starting_player = "You";
-		current_player = 'X';
-	}
-		else {
-			starting_player = "Computer";
-			current_player = 'O';
-	}
-	$('.first_player').delay(1350).css('display','block');
-	$('.first_player').delay(1350).prepend(starting_player);
-	return current_player;
-}
-
-
-
+// Change current player
 function change_player() {
 	if (current_player === 'X') {
 		current_player = 'O';
@@ -97,41 +103,5 @@ function change_player() {
 	else {
 		current_player = 'X';
 	}
+	return current_player;
 }
-
-
-
-/*
-
-
-		    $('td.game').click(function() {
-			if (whos_turn === player_1) {
-		        $(this).prepend("X"); // COULD PUT AN IMAGE HERE
-		    	this.cell_played = true;
-		    	board.this = "X";
-		    }
-			else if (whos_turn(player) === player_2) {
-				$(this).prepend("O");
-				this.cell_played = true;
-				board.this = "O";
-			}
-
-
-
-
-// CHECKING FOR HIT AMOUNT OF MATCHES. GAME ENDS. 
-
-function game_won() {  // DO LATER. MAKE 1 ROUND WORK FIRST
-
-}
-
-
-
-
-
-*/
-
-
-//DONT EDIT THIS.
-
-initialize();
