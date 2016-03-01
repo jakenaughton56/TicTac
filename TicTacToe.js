@@ -49,18 +49,29 @@ function play_game(game_board) {
             $(this).prepend(current_player);
 			game_board[row*3 + col] = current_player;
 
+
 			// check if player has won, else change players.
 			if(check_for_win(game_board,current_player) ){
-				confirm(current_player + " wins");
+				confirm("player wins");
 				game_board = set_up_game();
-				$('.game_table td').empty()
+				$('.game_table td').empty();
 			}
+
+			// If you are vsing a computer it is there turn
+			if(vs_type !== 'human'){
+				game_board = easy_play(game_board);
+				// check if computer has won
+				if(check_for_win(game_board,'O') ){
+					confirm("computer wins");
+					game_board = set_up_game();
+					$('.game_table td').empty();
+				}
+			}
+
+
 
 			if(vs_type === 'human'){
 				current_player = change_player(current_player);
-			}
-			else{
-				easy_play(game_board, $(this));
 			}
 		}
 	});
@@ -121,10 +132,32 @@ function change_player(current_player) {
 
 
 // Easy computer
-function easy_play(game_board,board_tile){
+function easy_play(game_board){
 
-	Math.floor(Math.random()*9);
+	var empty_tile = Math.floor(Math.random()*9);
 
+	while(game_board[empty_tile] !== null){
+		empty_tile = Math.floor(Math.random()*9);
+	}
+
+	// update game board data
+	game_board[empty_tile] = 'O';
+
+	// update visible game board
+	if(empty_tile < 3){
+		empty_tile++;
+		$('.game_table tr:first-child td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+	}
+	else if (empty_tile < 6) {
+		empty_tile -= 2;
+		$('.game_table tr:nth-child(2) td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+	}
+	else{
+		empty_tile -= 5;
+		$('.game_table tr:nth-child(3) td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+	}
+
+	return game_board;
 }
 
 
