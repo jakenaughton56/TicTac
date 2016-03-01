@@ -10,10 +10,11 @@ $(document).ready(function() {
 function initialize(){
 
 	// When player chooses difficulty
-	$('.menu_block').click(function() {
+	$('.menu_block td').click(function() {
 		$('.menu_block').toggle(500);
 		$('.game_table').delay(600).toggle();
 		$('.restart').delay(600).toggle();
+		vs_type = $(this).attr('class'); // global variable of game type
 	});
 }
 
@@ -30,9 +31,9 @@ function set_up_game() {
 
 function play_game(game_board) {
 
-	// Change to local variable
-	current_player = 'X';
-	var game_over = false
+	// Set first player
+	var current_player = 'X';
+
 	// when player clicks a tile
 	$('.game_table td').click(function() {
 		var col = $(this).parent().children().index($(this));
@@ -49,14 +50,11 @@ function play_game(game_board) {
 				game_board = set_up_game();
 				$('.game_table td').empty();
 			}
-			current_player = change_player();
+
+			current_player = change_player(current_player);
 		}
 	});
 
-	if(game_over === true){
-		confirm(current_player + " wins");
-
-	}
 
 	$('.restart').click(function(){
 		if(confirm("Are you sure you want to restart?")){
@@ -96,7 +94,7 @@ function check_for_win(game_board, player){
 }
 
 // Change current player
-function change_player() {
+function change_player(current_player) {
 	if (current_player === 'X') {
 		current_player = 'O';
 	}

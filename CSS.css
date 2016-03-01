@@ -66,23 +66,24 @@ body {
 	width: 70%;
 }
 
-/* all id's contained in menu block */
 /* different button colors */
-#human{
+.menu_block .human{
 	background-color: blue;
 }
 
-#easy{
+.menu_block .easy{
 	background-color: green;
 }
 
-#med{
+.menu_block .med{
 	background-color: orange;
 }
 
-#hard{
+.menu_block .hard{
 	background-color: red;
 }
+
+/* all id's contained in menu block */
 /* short description at end of options */
 #boss{
 	margin-top: 10%;
