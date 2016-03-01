@@ -12,9 +12,9 @@ function initialize(){
 	// When player chooses difficulty
 	$('.menu_block td').click(function() {
 		$('.menu_block').toggle(500);
-		$('.game_table').delay(600).toggle();
-		$('.restart').delay(600).toggle();
-		vs_type = $(this).attr('class'); // global variable of game type
+		$('.game_table').delay(600).toggle(500);
+		$('.back').delay(600).toggle(500);
+		vs_type = $(this).attr('class');
 	});
 }
 
@@ -36,8 +36,13 @@ function play_game(game_board) {
 
 	// when player clicks a tile
 	$('.game_table td').click(function() {
+
+
+		// grab board position
 		var col = $(this).parent().children().index($(this));
 		var row = $(this).parent().parent().children().index($(this).parent());
+
+
 		// checks if position on board has already been played
 		if(game_board[row*3 + col] === null){
 
@@ -48,18 +53,28 @@ function play_game(game_board) {
 			if(check_for_win(game_board,current_player) ){
 				confirm(current_player + " wins");
 				game_board = set_up_game();
-				$('.game_table td').empty();
+				$('.game_table td').empty()
 			}
 
-			current_player = change_player(current_player);
+			if(vs_type === 'human'){
+				current_player = change_player(current_player);
+			}
+			else{
+				easy_play(game_board, $(this));
+			}
 		}
 	});
 
 
-	$('.restart').click(function(){
-		if(confirm("Are you sure you want to restart?")){
-			game_board = set_up_game();
+	$('.back').click(function(){
+		if(confirm("Are you sure you want go back to menu?")){
+			// reset game
 			$('.game_table td').empty();
+			game_board = set_up_game();
+			// go back to main menu
+			$('.game_table').toggle(500);
+			$('.back').toggle(500);
+			$('.menu_block').delay(600).toggle(500);
 		}
 	});
 }
@@ -103,3 +118,14 @@ function change_player(current_player) {
 	}
 	return current_player;
 }
+
+
+// Easy computer
+function easy_play(game_board,board_tile){
+
+	Math.floor(Math.random()*9);
+
+}
+
+
+
