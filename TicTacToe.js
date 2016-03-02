@@ -55,6 +55,7 @@ function play_game(game_board) {
 				confirm("player wins");
 				game_board = set_up_game();
 				$('.game_table td').empty();
+				return;
 			}
 
 			// If you are vsing a computer it is there turn
@@ -146,15 +147,15 @@ function easy_play(game_board){
 	// update visible game board
 	if(empty_tile < 3){
 		empty_tile++;
-		$('.game_table tr:first-child td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+		$('.game_table tr:first-child td:nth-child('+ empty_tile +')').prepend('O');
 	}
 	else if (empty_tile < 6) {
 		empty_tile -= 2;
-		$('.game_table tr:nth-child(2) td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+		$('.game_table tr:nth-child(2) td:nth-child('+ empty_tile +')').prepend('O');
 	}
 	else{
 		empty_tile -= 5;
-		$('.game_table tr:nth-child(3) td:nth-child('+ empty_tile +')').delay(1000).prepend('O');
+		$('.game_table tr:nth-child(3) td:nth-child('+ empty_tile +')').prepend('O');
 	}
 
 	return game_board;
