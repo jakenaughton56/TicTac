@@ -58,6 +58,14 @@ function play_game(game_board) {
 				return;
 			}
 
+			// Check for draw
+			if( check_for_draw(game_board) ){
+				confirm("Draw");
+				game_board = set_up_game();
+				$('.game_table td').empty();
+				return;
+			}
+
 			// If you are vsing a computer it is there turn
 			if(vs_type !== 'human'){
 				game_board = easy_play(game_board);
@@ -70,7 +78,7 @@ function play_game(game_board) {
 			}
 
 
-
+			// If you are vsing another human change player
 			if(vs_type === 'human'){
 				current_player = change_player(current_player);
 			}
@@ -117,6 +125,18 @@ function check_for_win(game_board, player){
 	}
 	
 	// player has not won
+	return false;
+}
+
+// check for draw
+function check_for_draw(game_board){
+	var i = 0;
+	while( (game_board[i] !== null) && (i < 9) ){
+		i++;
+	}
+	if(i > 8){
+		return true;
+	}
 	return false;
 }
 
