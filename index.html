@@ -1,103 +1,68 @@
 <!doctype html>
-<html>
-  <head>
-    <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <!-- The main section -->
-    <div class="main">
-      <div class="container">
-        <h1>Introducing Shutterbugg</h1>
-        <p>Capture the moments that matter.</p>
-        <a href="#">Download Shutterbugg</a>
-      </div>
-    </div>
 
-    <!-- The first section div -->
-    <div class="section">
-      <div class="container">
-         <div class="row">
-  				<div class="col-md-6">
-          	<img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/share.png"/>
-          </div>
-  				<div class="col-md-6">
-            <h1>Share</h1>
-            <p>Share your moments with the people who matter to you most. With Shutterbugg, it's easy to share with the right people.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<head>
+    <title>Jake's Tic Tac Toe</title>
+    <link rel='stylesheet' type='text/css' href='css.css'/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src='TicTacToe.js' type='text/javascript'></script>
 
-    <!-- The second section div -->
-    <div class="section">
-      <div class="container">
-         <div class="row">
-  				<div class="col-md-6">
-            <h1>Explore</h1>
-            <p>Explore moments from your friends and family. Shutterbugg makes it easy to see what's happening in the world and take in everything around you.</p>
-           </div>
-  				<div class="col-md-6">
-            <img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/explore.png" id="moveRight"/>
-          </div>
-        </div>
-      </div>
-    </div>
+	<!-- bootstrap link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
 
-    <!-- The third section div -->
-    <div class="section">
-      <div class="container">
-         <div class="row">
-  				<div class="col-md-6">
-            <img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/save.png"/>
-           </div>
-  				<div class="col-md-6">
-            <h1>Save</h1>
-            <p>Save every photo you take. Shutterbugg automatically saves your photos so you can show them off from anywhere.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<body>
+	<div class ="heading">Tic Tac Toe </div>
+	<div class = "menu_block">
+		<h1>Choose your difficulty </h1>
 
-    
-    <div class="store section container">
-      <h2>Available for iPhone, iPad, and Android.</h2>
-      <img src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/app-store.png" width="185px" />
-      <img alt="Get it on Google Play" src="https://s3.amazonaws.com/codecademy-content/projects/shutterbugg/google-play.png" width="159px" />
-    </div>
+		<!--Probably should use bootstrap here instead of table here -->
+		<table class="game_options">
+			<tr>
+				<td class="human">Human Verus Human</td>
+				<td class="easy" >Beginner</td>
+				<td class="med"  >Intermediate</td>
+				<td class="hard" >Boss</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td id="boss">
+					<p> Good Luck! <p>
+				</td>
+				<td> <img src="images/tic_tac_toe_win.jpg"/> </td>
+			</tr>
+		</table>
+	</div>
 
-    <!-- The footer div -->
-    <div class="footer">
-      <div class="container">
-        <div class="row">
-  				<div class="col-md-3">
-            <h4>Company</h4>
-            <ul>
-              <li>Careers</li>
-              <li>Terms</li>
-              <li>Help</li>
-            </ul>
-          </div>
-  				<div class="col-md-3">
-           <h4>Products</h4>
-            <ul>
-              <li>Shutterbigg</li>
-              <li>Speakerboxx</li>
-            </ul>
-          </div>
-  				<div class="col-md-3">
-           <h4>News</h4>
-            <ul>
-              <li>Blog</li>
-              <li>Twitter</li>
-              <li>Youtube</li>
-              <li>Google+</li>
-              <li>Facebook</li>
-            </ul>
-          </div>
-				</div>   
-      </div>
-    </div>
+	<div class ="game_in_play">
+		<table class="game_table">
+			<tr>
+				<td></td> <td class="m"></td> <td></td>
+			</tr>
+			<tr class="row2">
+				<td></td> <td></td> <td></td>
+			</tr>
+			<tr class="row3">
+				<td></td> <td></td> <td></td>
+			</tr>
+		</table>
 
-  </body>
+		<p class="back"> Back <p>
+	</div>
+
+
+
+
+<!-- This is where scores are displayed -->
+
+<aside id="sidebar">
+    <section id="widget_1"></section>
+    <section id="widget_2"></section>
+    <section id="widget_3"></section>
+</aside>
+
+<!--	 footer currenty not needed.
+<footer>OpenSource Jake Naughton 2016</footer>
+-->
+</body>
 </html>
